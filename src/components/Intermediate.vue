@@ -4,7 +4,6 @@
         methods: {
             pick: function(choice) {
                 this.$emit('choice', choice)
-                console.log(choice)
             }
         }
     }
@@ -19,10 +18,10 @@
             <img src="/virus_logo.png" alt="Virus Logo" style="position: relative; width: 70%; top: -243vh; left: 6vw;">
         </div>
         <div class="option" style="background-color: rgb(82, 166, 152);" @click="pick('antibody')">
-            <img src="/Antibody.png" alt="Antibody" style="width: 100%; height: 90%; position: relative; top: 10%;">
-            <img src="/greenting.gif" alt="Green Thing" style="width: 20vw; position: relative; top: -15vw;">
-            <img src="/greenting.gif" alt="Green Thing" style="width: 20vw; position: relative; left: 6vw; top: -15vw;">
-            <img src="/antibody_logo.png" alt="Antibody Logo" style="width: 70%; position: relative; top: -57vw; left: 7vw;">
+            <img src="/Antibody.png" alt="Antibody" style="width: 100%; height: 100%; position: relative;">
+            <img src="/greenting.gif" alt="Green Thing" style="width: 20vw; position: relative; top: -20vw;">
+            <img src="/greenting.gif" alt="Green Thing" style="width: 20vw; position: relative; left: 6vw; top: -20vw;">
+            <img src="/antibody_logo.png" alt="Antibody Logo" style="width: 70%; position: relative; top: -60vw; left: 7vw;">
         </div>
     </div>
 </template>

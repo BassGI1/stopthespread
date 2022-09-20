@@ -8,12 +8,14 @@
             renderIntermediate: true,
             player: '',
             name: '',
-            animateButton: false
+            animateButton: false,
+            renderGame: false
         }
     },
     methods: {
         start: function() {
             this.animateButton = true
+            setTimeout(() => {this.renderGame = true}, 8000)
         }
     }
 }
@@ -21,11 +23,17 @@
 
 <template>
     <div style="height: 100vh; width: 43vw; align-items: center; justify-content: center; display: flex; flex-wrap: wrap;">
+
         <Intermediate v-if="renderIntermediate" @choice="(x) => {renderIntermediate = false; player = x;}"/>
-        <h1 v-if="player !== ''">You are playing as the {{ player }}. Name your {{ player }}:</h1>
-        <input type="text" v-model="name" v-if="player !== ''" style="margin-top: -50vh;" :placeholder="player">
-        <div class="startbutton" v-if="player !== ''" @click="start()" v-bind:class="{animateButton: animateButton}">{{ animateButton ? '' : ' Begin! ' }}</div>
+        <h1 v-if="player !== '' && !renderGame">You are playing as the {{ player }}. Name your {{ player }}:</h1>
+        <input type="text" v-model="name" v-if="player !== '' && !renderGame" style="margin-top: -50vh;" :placeholder="player">
+        <div class="startbutton" v-if="player !== '' && !renderGame" @click="start()" v-bind:class="{animateButton: animateButton}">{{ animateButton ? '' : ' Begin! ' }}</div>
     </div>
+
+    <div class="gamediv" v-if="renderGame">
+
+    </div>
+
 </template>
 
 <style scoped>
@@ -76,5 +84,14 @@
             box-shadow: inset 0 0 0 1vw purple;
             cursor: default;
         }
+    }
+    .gamediv{
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        width: 100vw;
+        height: 100vh;
+        background: url(/background_1.jpg) no-repeat center center fixed;
+        background-size: 100%;
     }
 </style>

@@ -1,21 +1,25 @@
 <script>
     import Intermediate from './Intermediate.vue';
+    import HealthBar from './HealthBar.vue';
     export default {
     name: "SinglePlayer",
-    components: { Intermediate },
+    components: { Intermediate, HealthBar },
     data() {
         return {
             renderIntermediate: true,
             player: '',
             name: '',
             animateButton: false,
-            renderGame: false
+            renderGame: false,
+            health: 100
         }
     },
     methods: {
         start: function() {
             this.animateButton = true
-            setTimeout(() => {this.renderGame = true}, 8000)
+            //setTimeout(() => {this.renderGame = true}, 8000)
+            this.renderGame = true
+            //change this back after done making the game
         }
     }
 }
@@ -31,7 +35,7 @@
     </div>
 
     <div class="gamediv" v-if="renderGame">
-
+        <HealthBar :name="name" :position="'top'" :health="health" />
     </div>
 
 </template>
@@ -91,7 +95,7 @@
         top: 0px;
         width: 100vw;
         height: 100vh;
-        background: url(/background_1.jpg) no-repeat center center fixed;
+        background: url(/background_2.jpg) no-repeat center center fixed;
         background-size: 100%;
     }
 </style>
